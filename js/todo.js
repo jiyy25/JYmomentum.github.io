@@ -2,7 +2,7 @@ const todoForm = document.getElementById("todoForm");
 const todoInput = document.querySelector("#todoForm input");
 const todoList = document.getElementById("todolist");
 
-const todos = [];
+let todos = [];
 
 //로컬스토리지에 투두리스트 추가
 function saveTodos() {
@@ -13,16 +13,21 @@ function handleTodoSubmit(e) {
     e.preventDefault();
     const newTodo = todoInput.value;
     todoInput.value = "";
-    todos.push(newTodo); //todos빈Arr에 todovalue를 추가
-    addTodo(newTodo);
+    const todoObj = {
+        id: Date.now(),
+        text: newTodo
+    }
+    todos.push(todoObj); //todos빈Arr에 todovalue를 추가 -> obj형으로 추가
+    addTodo(todoObj);
     saveTodos();
 }
 
 function deleteTodo(e) {
     const li = e.target.parentElement;
-    console.log(li);
-    console.dir(li);
+    todos = todos.filter((Todo) => Todo.id !== parseInt(li.id));
+    console.log(todos)
     li.remove();
+    saveTodos()
 }
 
 //element를 추가하는 함수
@@ -31,8 +36,9 @@ function addTodo(newTodo) {
     const span = document.createElement("span");
     const button = document.createElement("button");
 
+    li.id = newTodo.id; //li의 id에 고유아이디를 추가
     li.appendChild(span);
-    span.innerText = newTodo
+    span.innerText = newTodo.text
     button.innerText = "✖️"
     console.log(li);
     todoList.appendChild(li);
@@ -42,3 +48,11 @@ function addTodo(newTodo) {
 }
 
 todoForm.addEventListener("submit", handleTodoSubmit);
+
+const savedTodos = localStorage.getItem("todos");
+
+if (savedTodos !== null) {
+    const parsedTodos = JSON.parse(savedTodos);
+    todos = parsedTodos;
+    parsedTodos.forEach(addTodo);
+}
