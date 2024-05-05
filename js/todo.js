@@ -1,6 +1,7 @@
 const todoForm = document.getElementById("todoForm");
 const todoInput = document.querySelector("#todoForm input");
 const todoList = document.getElementById("todolist");
+const emo = ["🌸", "🌞", "🌼", "🤍", "💛", "🍀", "🌟", "💫"]
 
 let todos = [];
 
@@ -25,7 +26,6 @@ function handleTodoSubmit(e) {
 function deleteTodo(e) {
     const li = e.target.parentElement;
     todos = todos.filter((Todo) => Todo.id !== parseInt(li.id));
-    console.log(todos)
     li.remove();
     saveTodos()
 }
@@ -35,12 +35,12 @@ function addTodo(newTodo) {
     const li = document.createElement("li");
     const span = document.createElement("span");
     const button = document.createElement("button");
+    const emoRandom = emo[Math.floor(Math.random() * emo.length)];
 
     li.id = newTodo.id; //li의 id에 고유아이디를 추가
     li.appendChild(span);
-    span.innerText = newTodo.text
+    span.innerText = emoRandom + " " + newTodo.text
     button.innerText = "✖️"
-    console.log(li);
     todoList.appendChild(li);
     li.appendChild(button);
 

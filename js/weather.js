@@ -1,6 +1,7 @@
-const city = document.querySelector("#weather span:first-child");
-const weather = document.querySelector("#weather span:nth-child(2)");
-const temp = document.querySelector("#weather span:last-child");
+// const city = document.querySelector("#weather span:first-child");
+const city = document.querySelector("#weather div");
+const weather = document.querySelector("#weather .weather");
+const temp = document.querySelector("#weather .temp");
 const API_KEY = "ac0a31ea3545e785252876f64298b137"
 
 function onGeok(position) {
@@ -12,9 +13,9 @@ function onGeok(position) {
         .then((data) => {
             city.innerText = data.name;
             weather.innerText = data.weather[0].main;
-            temp.innerText = `${data.main.temp}도`;
+            temp.innerText = `/ ${data.main.temp}도`;
         })
-    console.log("You live in", lat, lng);
+    // console.log("You live in", lat, lng);
 }
 
 function onGeoError() {

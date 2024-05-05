@@ -9,29 +9,33 @@
 </head>
 
 <body>
-    <form id="loginForm" class="hidden">
-        <input type="text" placeholder="What is your name?" required maxlength="15">
-        <button type="submit">Log in</button>
-    </form>
 
-    <h1 id="greeting" class="hidden"></h1>
-    <h2 id="clock"></h2>
-    <div id="quote">
-        <span></span>
-        <span></span>
+    <div id="loginArea">
+        <form id="loginForm" class="hidden">
+            <input type="text" placeholder="What is your name?" required maxlength="15">
+            <button type="submit">Log in</button>
+        </form>
+        <h1 id="greeting" class="hidden"></h1>
+    </div>
+
+    <div class="clockQ">
+        <h2 id="clock"></h2>
+        <div id="quote">
+            <span></span>
+            <span></span>
+        </div>
     </div>
 
     <form id="todoForm">
         <input type="text" id="todoInput" placeholder="Enter todo list!" autocomplete="off" required>
-        <button type="submit">입력</button>
     </form>
 
     <ul id="todolist"></ul>
 
     <div id="weather">
-        <span></span>
-        <span></span>
-        <span></span>
+        <div></div>
+        <span class="weather"></span>
+        <span class="temp"></span>
     </div>
 
     <script src="./js/greeting.js"></script>
