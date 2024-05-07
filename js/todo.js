@@ -37,6 +37,7 @@ function addTodo(newTodo) {
     const button = document.createElement("button");
     const emoRandom = emo[Math.floor(Math.random() * emo.length)];
 
+    todoList.classList.remove(HIDDEN_CLASSNAME);
     li.id = newTodo.id; //li의 id에 고유아이디를 추가
     li.appendChild(span);
     span.innerText = emoRandom + " " + newTodo.text

@@ -70,6 +70,20 @@ button {
     border: 1px solid #fff;
     border-radius: 10px;
     padding: 0 5px;
+    cursor: pointer;
+}
+
+#logOut {
+    color: #fff;
+    font-family: 'TAEBAEKmilkyway' !important;
+    cursor: pointer !important;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    border: 1px solid #fff;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bolder;
 }
 
 #clock {
@@ -109,6 +123,13 @@ button {
 #weather span {
     font-size: 1rem;
 }
+
+/* todo-list */
+#todoForm.hidden,
+#todolist.hidden {
+    display: none;
+}
+
 
 #todoForm input {
     width: 250px;
